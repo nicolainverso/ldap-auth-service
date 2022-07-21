@@ -1,0 +1,75 @@
+dn: dc=ldapdemo,dc=com
+objectclass: top
+objectclass: domain
+objectclass: extensibleObject
+dc: ldapdemo
+
+# Organizational Units
+dn: ou=groups,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+dn: ou=users,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: users
+
+dn: ou=system,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: system
+
+# Create users
+dn: uid=admin,ou=system,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Jihn Die
+sn: Jihn
+uid: admin
+password: 5en6G6MezRroT3XKqkdPOmY/BfQ=
+
+dn: uid=john,ou=users,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: John Doe
+sn: John
+uid: john
+userPassword: password
+
+dn: uid=jahn,ou=users,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Jahn Dae
+sn: Jahn
+uid: jahn
+userPassword: 5en6G6MezRroT3XKqkdPOmY/BfQ=
+
+# Create Groups
+dn: cn=developers,ou=groups,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: developers
+ou: developer
+uniqueMember: uid=john,ou=users,dc=ldapdemo,dc=com
+uniqueMember: uid=jihn,ou=users,dc=ldapdemo,dc=com
+
+dn: cn=managers,ou=groups,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: managers
+ou: manager
+uniqueMember: uid=jahn,ou=users,dc=ldapdemo,dc=com
+
+dn: cn=system,ou=groups,dc=ldapdemo,dc=com
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: admin
+ou: admin
+uniqueMember: uid=admin,ou=system,dc=ldapdemo,dc=com
